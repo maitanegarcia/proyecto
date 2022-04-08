@@ -21,6 +21,7 @@ void registarAdministrador(){
 	fflush(stdin);
 	gets(a.contrasena);
 
+
 }
 
 void anadirAdministrador(Administrador *,char *email, char *cont){

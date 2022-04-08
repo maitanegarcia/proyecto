@@ -9,7 +9,7 @@
 
 #include<stdio.h>
 
-void registarAdministrador(){
+Administrador registarAdministrador(){
 	Administrador a;
 
 	printf("Intrdouce tu email: ");
@@ -22,11 +22,14 @@ void registarAdministrador(){
 	gets(a.contrasena);
 
 
+	return a;
+
+
 }
 
-void anadirAdministrador(Administrador *,char *email, char *cont){
-
-}
+//void anadirAdministrador(Administrador *,char *email, char *cont){
+//
+//}
 //void borrarAdministrador(Administrador *ad,char *nombre){
 //
 //}

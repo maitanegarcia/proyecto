@@ -9,7 +9,7 @@
 
 #include<stdio.h>
 
-void registarAdministrador(){
+Administrador registarAdministrador(){
 	Administrador a;
 
 	printf("Intrdouce tu email: ");
@@ -20,6 +20,8 @@ void registarAdministrador(){
 	fflush(stdout);
 	fflush(stdin);
 	gets(a.contrasena);
+
+	return a;
 
 }
 

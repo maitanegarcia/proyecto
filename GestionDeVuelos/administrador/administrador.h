@@ -21,7 +21,7 @@ typedef struct
 }ListaAdmins;
 
 
-void registrarAdministrador();
+Administrador registrarAdministrador();
 void anadirAdministrador(Administrador *a,char *email, char *cont);
 void borrarAdministrador(Administrador *a,char *email);
 void editarAdministrador(Administrador *a,char *email,char *cont);

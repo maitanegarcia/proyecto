@@ -12,7 +12,7 @@
 
 int main(void){
 	char opcion;
-	Administrador adm;
+
 	//Cliente cl;
 	do{
 			opcion = mostrarMenu();
@@ -21,7 +21,7 @@ int main(void){
 				//iniciarSesion();
 				break;
 			case '2':
-				//mostrarMenuRegistrar();
+				mostrarMenuRegistrar();
 
 				break;
 			case '3':

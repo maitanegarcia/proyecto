@@ -15,14 +15,27 @@ Administrador registarAdministrador()
 {
 	Administrador a;
 
-	printf("Intrdouce tu email: ");
-	fflush(stdout);
-	fflush(stdin);
-	gets(a.email);
-	printf("Intrdouce tu contraseña: ");
-	fflush(stdout);
-	fflush(stdin);
-	gets(a.contrasenia);
+	printf("Introduce tu dni: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(a.dni);
+		printf("Introduce tu nombre: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(a.nombre);
+		printf("Introduce tus apellidos: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(a.apellidos);
+		printf("Introduce tu email: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(a.correoElectronico);
+		printf("Introduce tu contraseña: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(a.contrasenia);
+
 
 
 	return a;
@@ -37,7 +50,7 @@ int encontrarAdministrador(Administradores ads, char *email)
 	x=0;
 	while(enc==0 && x<ads.numAdmins)
 	{
-		if(strcmp(ads.a[x].email, email) == 0)
+		if(strcmp(ads.a[x].correoElectronico, email) == 0)
 		{
 			enc=1;
 		}
@@ -73,7 +86,7 @@ void anadirAdministrador(Administradores *ads)
 
 	//crear = registrarAdministrador();
 
-	x = encontrarAdministrador(*ads, crear.email);
+	x = encontrarAdministrador(*ads, crear.correoElectronico);
 
 	if(x!=-1)
 	{
@@ -115,7 +128,7 @@ void editarAdministrador(Administradores *ads, char *email, char *cont)
 
 		if(x!=-1)
 		{
-			strcpy(ads->a[x].email, email);
+			strcpy(ads->a[x].correoElectronico, email);
 			strcpy(ads->a[x].contrasenia, cont);
 		}
 

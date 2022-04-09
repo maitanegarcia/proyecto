@@ -10,7 +10,10 @@
 
 typedef struct
 {
-	char email[40];
+	char dni[10];
+	char nombre[10];
+	char *apellidos;
+	char correoElectronico[40];
 	char contrasenia[30];
 }Administrador;
 

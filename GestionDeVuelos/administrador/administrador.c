@@ -71,7 +71,7 @@ void anadirAdministrador(Administradores *ads)
 	Administrador crear;
 	int x;
 
-	crear = registrarAdministrador();
+	//crear = registrarAdministrador();
 
 	x = encontrarAdministrador(*ads, crear.email);
 

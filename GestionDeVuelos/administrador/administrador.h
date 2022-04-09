@@ -10,20 +10,30 @@
 
 typedef struct
 {
-	char *email;
-	char *contrasena;
+	char email[40];
+	char contrasenia[30];
 }Administrador;
 
 typedef struct
 {
 	Administrador *a;
-	int numAdministrador;
-}ListaAdmins;
+	int numAdmins;
+	int tam;
+}Administradores;
 
 
 Administrador registrarAdministrador();
-void anadirAdministrador(Administrador *a,char *email, char *cont);
-void borrarAdministrador(Administrador *a,char *email);
-void editarAdministrador(Administrador *a,char *email,char *cont);
+
+int encontrarAdministrador(Administradores ads, char *email);
+
+Administradores reservaAdministradores(int tamanyo);
+
+void anadirAdministrador(Administradores *ads);
+
+void borrarAdministrador(Administradores *ads,char *email);
+
+void editarAdministrador(Administradores *ads, char *email, char *cont);
+
+void liberarMemoria(Administradores ads);
 
 #endif /* ADMINISTRADOR_ADMINISTRADOR_H_ */

@@ -9,7 +9,7 @@
 #define CLASE_CLASE_H_
 
 typedef struct {
-	int codClase[];
+	//int codClase[];
 	char* nomClase;
 }Clase;
 

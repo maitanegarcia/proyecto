@@ -25,10 +25,10 @@ int main(void){
 
 				break;
 			case '3':
-				printf("Cerrando sesión...\n");
+				printf("Cerrando sesion...\n");
 				fflush(stdout);
 				break;
-			default: printf("ERROR! La opción seleccionada no es correcta \n");
+			default: printf("ERROR! La opcion seleccionada no es correcta \n");
 			fflush(stdin);
 			}
 	}while(opcion=='3');
@@ -52,7 +52,7 @@ int main(void){
 //				// registrar usuario
 //				break;
 //			case '3':
-//			printf("Cerrando sesión...\n");
+//			printf("Cerrando sesiï¿½n...\n");
 //			fflush(stdout);
 //	}while(opcion !='3');
 //	return EXIT_SUCCESS;

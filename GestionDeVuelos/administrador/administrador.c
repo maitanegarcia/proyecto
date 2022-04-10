@@ -43,14 +43,14 @@ Administrador registarAdministrador()
 
 }
 
-int encontrarAdministrador(Administradores ads, char *email)
+int encontrarAdministrador(Administradores ads, char *dni)
 {
 	int enc, x;
 	enc=0;
 	x=0;
 	while(enc==0 && x<ads.numAdmins)
 	{
-		if(strcmp(ads.a[x].correoElectronico, email) == 0)
+		if(strcmp(ads.a[x].correoElectronico, dni) == 0)
 		{
 			enc=1;
 		}
@@ -86,7 +86,7 @@ void anadirAdministrador(Administradores *ads)
 
 	//crear = registrarAdministrador();
 
-	x = encontrarAdministrador(*ads, crear.correoElectronico);
+	x = encontrarAdministrador(*ads, crear.dni);
 
 	if(x!=-1)
 	{
@@ -103,11 +103,11 @@ void anadirAdministrador(Administradores *ads)
 
 }
 
-void borrarAdministrador(Administradores *ads,char *email)
+void borrarAdministrador(Administradores *ads,char *dni)
 {
 	int i, x;
 
-	x = encontrarAdministrador(*ads, email);
+	x = encontrarAdministrador(*ads, dni);
 
 	if(x!=-1)
 	{
@@ -120,15 +120,18 @@ void borrarAdministrador(Administradores *ads,char *email)
 
 }
 
-void editarAdministrador(Administradores *ads, char *email, char *cont)
+void editarAdministrador(Administradores *ads, char *dni, char *nombre, char *apellidos, char *correoElectronico, char *cont)
 {
 	int x;
 
-		x = encontrarAdministrador(*ads, email);
+		x = encontrarAdministrador(*ads, dni);
 
 		if(x!=-1)
 		{
-			strcpy(ads->a[x].correoElectronico, email);
+			strcpy(ads->a[x].dni, dni);
+			strcpy(ads->a[x].nombre, nombre);
+			strcpy(ads->a[x].apellidos, apellidos);
+			strcpy(ads->a[x].correoElectronico, correoElectronico);
 			strcpy(ads->a[x].contrasenia, cont);
 		}
 

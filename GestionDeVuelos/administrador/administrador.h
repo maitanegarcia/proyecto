@@ -11,9 +11,9 @@
 typedef struct
 {
 	char dni[10];
-	char nombre[10];
+	char *nombre;
 	char *apellidos;
-	char correoElectronico[40];
+	char *correoElectronico;
 	char contrasenia[30];
 }Administrador;
 
@@ -27,15 +27,15 @@ typedef struct
 
 Administrador registrarAdministrador();
 
-int encontrarAdministrador(Administradores ads, char *email);
+int encontrarAdministrador(Administradores ads, char *dni);
 
 Administradores reservaAdministradores(int tamanyo);
 
 void anadirAdministrador(Administradores *ads);
 
-void borrarAdministrador(Administradores *ads,char *email);
+void borrarAdministrador(Administradores *ads,char *dni);
 
-void editarAdministrador(Administradores *ads, char *email, char *cont);
+void editarAdministrador(Administradores *ads, char *dni, char *nombre, char *apellidos, char *correoElectronico, char *cont);
 
 void liberarMemoria(Administradores ads);
 

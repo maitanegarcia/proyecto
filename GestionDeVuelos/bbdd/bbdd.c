@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void crearTablasAdministrador(sqlite3 *db)
+void crearTablaAdministrador(sqlite3 *db)
 {
 	sqlite3_stmt *stmt;
 
@@ -38,7 +38,7 @@ void borrarAdministrador(sqlite3 *db, char *dni)
 	sqlite3_finalize(stmt);
 }
 
-void mostrarPersonas(sqlite3 *db)
+void mostrarAdministradores(sqlite3 *db)
 {
 	sqlite3_stmt *stmt;
 	int step, *dni;

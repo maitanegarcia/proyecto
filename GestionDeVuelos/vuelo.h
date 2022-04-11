@@ -8,7 +8,7 @@
 #ifndef VUELO_VUELO_H_
 #define VUELO_VUELO_H_
 
-#include "../ciudad/ciudad.h"
+#include "ciudad.h"
 
 typedef struct {
 	int idVuelo[8];

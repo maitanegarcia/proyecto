@@ -1,8 +1,8 @@
 /*
- * vuelo.c
+ * billete.c
  *
  *  Created on: 9 abr 2022
  *      Author: marta
  */
 
-#include "../vuelo/vuelo.h"
+#include "billete.h"

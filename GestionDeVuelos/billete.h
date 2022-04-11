@@ -8,9 +8,9 @@
 #ifndef BILLETE_BILLETE_H_
 #define BILLETE_BILLETE_H_
 
-#include "../cliente/cliente.h"
-#include "../clase/clase.h"
-#include "../vuelo/vuelo.h"
+#include "cliente.h"
+#include "clase.h"
+#include "vuelo.h"
 
 typedef struct {
 	int codBillete[8];

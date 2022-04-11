@@ -55,7 +55,7 @@ void mostrarAdministradores(sqlite3 *db)
 		strcpy(apellidos, (char*)sqlite3_column_text(stmt, 2));
 		strcpy(correoElectronico, (char*)sqlite3_column_text(stmt, 3));
 		strcpy(contrasenia, (char*)sqlite3_column_text(stmt, 4));
-		printf("%s %s %s %s %s\n",dni,nombre, apellidos, correoElectronico, contrasenia);
+		printf("%s %s %s %s %s\n", dni, nombre, apellidos, correoElectronico, contrasenia);
 
 	}
 	while(step == SQLITE_ROW);

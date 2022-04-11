@@ -8,45 +8,45 @@
 void registarAdministrador(Administrador a)
 {
 	printf("Introduce tu dni: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(a.dni);
-		printf("Introduce tu nombre: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(a.nombre);
-		printf("Introduce tus apellidos: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(a.apellidos);
-		printf("Introduce tu email: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(a.correoElectronico);
-		printf("Introduce tu contraseña: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(a.contrasenia);
+	fflush(stdout);
+	fflush(stdin);
+	gets(a.dni);
+	printf("Introduce tu nombre: ");
+	fflush(stdout);
+	fflush(stdin);
+	gets(a.nombre);
+	printf("Introduce tus apellidos: ");
+	fflush(stdout);
+	fflush(stdin);
+	gets(a.apellidos);
+	printf("Introduce tu email: ");
+	fflush(stdout);
+	fflush(stdin);
+	gets(a.correoElectronico);
+	printf("Introduce tu contraseña: ");
+	fflush(stdout);
+	fflush(stdin);
+	gets(a.contrasenia);
 
 }
 
 int encontrarAdministrador(Administradores ads, char *dni)
 {
-	int enc, x;
-	enc=0;
+	int esta, x;
+	esta=0;
 	x=0;
-	while(enc==0 && x<ads.numAdmins)
+	while(esta==0 && x<ads.numAdmins)
 	{
 		if(strcmp(ads.a[x].correoElectronico, dni) == 0)
 		{
-			enc=1;
+			esta=1;
 		}
 		else
 		{
 			x++;
 		}
 	}
-	if(enc == 0)
+	if(esta == 0)
 	{
 		x=-1;
 	}
@@ -111,16 +111,16 @@ void editarAdministrador(Administradores *ads, char *dni, char *nombre, char *ap
 {
 	int x;
 
-		x = encontrarAdministrador(*ads, dni);
+	x = encontrarAdministrador(*ads, dni);
 
-		if(x!=-1)
-		{
-			strcpy(ads->a[x].dni, dni);
-			strcpy(ads->a[x].nombre, nombre);
-			strcpy(ads->a[x].apellidos, apellidos);
-			strcpy(ads->a[x].correoElectronico, correoElectronico);
-			strcpy(ads->a[x].contrasenia, cont);
-		}
+	if(x!=-1)
+	{
+		strcpy(ads->a[x].dni, dni);
+		strcpy(ads->a[x].nombre, nombre);
+		strcpy(ads->a[x].apellidos, apellidos);
+		strcpy(ads->a[x].correoElectronico, correoElectronico);
+		strcpy(ads->a[x].contrasenia, cont);
+	}
 
 }
 

@@ -1,9 +1,3 @@
-/*
- * administrador.c
- *
- *  Created on: 5 abr. 2022
- *      Author: BSILV
- */
 
 #include "../administrador/administrador.h"
 
@@ -11,10 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-Administrador registarAdministrador()
+void registarAdministrador(Administrador a)
 {
-	Administrador a;
-
 	printf("Introduce tu dni: ");
 		fflush(stdout);
 		fflush(stdin);
@@ -35,11 +27,6 @@ Administrador registarAdministrador()
 		fflush(stdout);
 		fflush(stdin);
 		gets(a.contrasenia);
-
-
-
-	return a;
-
 
 }
 

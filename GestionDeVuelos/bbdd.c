@@ -6,7 +6,7 @@ void crearTablaAdministrador(sqlite3 *db)
 {
 	sqlite3_stmt *stmt;
 
-	//Hacer pregunta Marian
+
 	//Como poner los valores si tenemos *nombre, *apellidos, *correoElectronico
 	char sql1[] = "CREATE TABLA ADMINISTRADOR(dni varchar2(10), nombre varchar2(20), apellidos varchar2(30), correoElectronico varchar2(30), contrasenia varchar2(30))";
 	sqlite3_prepare_v2(db, sql1, -1, &stmt, NULL) ;
@@ -74,4 +74,3 @@ void borrarAdministradorBBDD(sqlite3 *db, char *dni){
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
 }
-

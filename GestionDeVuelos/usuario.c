@@ -1,24 +1,18 @@
-/*
- * administrador.c
- *
- *  Created on: 5 abr. 2022
- *      Author: BSILV
- */
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "usuario.h"
 
 
-int encontrarAdministrador(ListaUsuarios us, char *dni)
+int encontrarAdministrador(ListaUsuarios us, char *correo)
 {
 	int enc, x;
 	enc=0;
 	x=0;
+	int esAdm=0;
 	while(enc==0 && x<us.numAdmins)
 	{
-		if(strcmp(us[x].u->esAdmin, dni) == 0)
+		if(strcmp(us.u[x].correoElectronico,correo)==0)//isma??
 		{
 			enc=1;
 		}
@@ -34,6 +28,7 @@ int encontrarAdministrador(ListaUsuarios us, char *dni)
 
 	return x;
 }
+
 
 ListaUsuarios reservaAdministradores(int tamanyo)
 {

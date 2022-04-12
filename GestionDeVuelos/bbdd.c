@@ -2,6 +2,22 @@
 #include <stdio.h>
 #include <string.h>
 
+
+int buscarUsuario(sqlite3 *db, char *correoElectronico){
+	sqlite3_stmt *stmt;
+	char sql[100];
+	int esAdmin;
+
+	sprintf(sql, "SELECT esAdmin FROM USuario WHERE email = '%s'",correoElectronico);
+	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
+	sqlite3_step(stmt);
+	esAdmin = sqlite3_column_int(stmt, 1);
+	sqlite3_finalize(stmt);
+
+	return esAdmin;
+}
+
+
 void crearTablaAdministrador(sqlite3 *db)
 {
 	sqlite3_stmt *stmt;
@@ -52,20 +68,6 @@ void mostrarAdministradores(sqlite3 *db)
 
 	sqlite3_finalize(stmt);
 
-}
-
-int buscarUsuario(sqlite3 *db, char *correoElectronico){
-	sqlite3_stmt *stmt;
-	char sql[100];
-	int esAdmin;
-
-	sprintf(sql, "SELECT esAdmin FROM USuario WHERE email = '%s'",correoElectronico);
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
-	sqlite3_step(stmt);
-	esAdmin = sqlite3_column_int(stmt, 1);
-	sqlite3_finalize(stmt);
-
-	return esAdmin;
 }
 
 void borrarAdministradorBBDD(sqlite3 *db, char *dni){

@@ -5,8 +5,8 @@
  *      Author: BSILV
  */
 
-#ifndef ADMINISTRADOR_ADMINISTRADOR_H_
-#define ADMINISTRADOR_ADMINISTRADOR_H_
+#ifndef USUARIO_USUARIO_H_
+#define USUARIO_USUARIO_H_
 
 typedef struct
 {
@@ -21,18 +21,18 @@ typedef struct
 typedef struct
 {
 	Usuario *u;
-	int numAdmins;
+	int numUsus;
 	int tam;
 }ListaUsuarios;
 
 
-int encontrarAdministrador(ListaUsuarios us, char *dni);
+int encontrarAdministrador(ListaUsuarios us, char *correoElectronico);
 
 ListaUsuarios reservaAdministradores(int tamanyo);
 
-void anadirAdministrador(ListaUsuarios *us);
+//void anadirAdministrador(ListaUsuarios *us);
 
-void borrarAdministrador(ListaUsuarios*us,char *dni);
+void borrarAdministrador(ListaUsuarios*us,char *correoElectronico);
 
 void editarAdministrador(ListaUsuarios *us, char *dni, char *nombre, char *apellidos, char *correoElectronico, char *cont);
 

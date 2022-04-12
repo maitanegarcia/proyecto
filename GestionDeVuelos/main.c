@@ -9,46 +9,65 @@
 #include "configuracion.h"
 #include "usuario.h"
 #include "menuAdministrador.h"
-Usuario pedirDatosInicio();
-void registrarA(Usuario *u);
+#include "bbdd.h"
 
-int main(void){
+
+Usuario pedirDatosInicio();
+void registrarAdmin(Usuario *u);
+
+
+int main(void)
+{
 	char opcion,opcion1;
 	Usuario us;
 	tConfig c;
 	sqlite3 *db;
 	int esAdmin;
-	sqlite3_open("gestion.sqlite", &db);
+
+	sqlite3_open("gestiorvuelos.sqlite", &db);
 	//Cliente cl;
 	cargarConfig(&c);
 	crearTablaAdministrador(&db);
-	do{
+	do
+	{
 			opcion = mostrarMenu();
+
 			switch(opcion){
+
 			case '1':
 				us = pedirDatosInicio();
 				printf("%s\n",us.correoElectronico);
 				esAdmin = buscarUsuario(db, us.correoElectronico);
+
 				if(esAdmin == 1){
-					do{
+					do
+					{
 						opcion1 = mostrarMenuAdministrador();
+
 						switch(opcion1){
-							case '1':// mostrarVuelos(db);// mostrar viajes
+
+						case '1':// mostrarVuelos(db);// mostrar viajes
 							break;
-							case '2'://modificarReservas(db);// editar las reservas
+
+						case '2'://modificarReservas(db);// editar las reservas
 							break;
-							case '3'://visualizarReservas(db);// visulaizar las reservas
+
+						case '3'://visualizarReservas(db);// visulaizar las reservas
 							break;
-							case '4':
+
+						case '4':
 								mostrarAdministradores(db);// mostrarAdministradores
 							break;
-							case '5':
+
+						case '5':
 								// editar tablas de la base de datos
 								//preguntar que tabla quiere editar.
 							break;
-							case '6':cargarConfig(&c);// visualizar el fichero de configuración
+
+						case '6':cargarConfig(&c);// visualizar el fichero de configuraciï¿½n
 							break;
-							case'7':
+
+						case'7':
 							printf("Cerrando sesion\n");
 							fflush(stdout);
 							break;
@@ -62,29 +81,38 @@ int main(void){
 				break;
 			case '2':
 				opcion1=mostrarMenuRegistrar();
+
 				switch(opcion1){
+
 				case'1':
-					registarA(&us);
+					registrarAdmin(&us);
 					guardarAdmin(us);
 					insertarAdministrador(db, us.dni, us.nombre, us.apellidos, us.correoElectronico, us.contrasenia);
 					break;
+
 				case'2':
 					//registrar usuario
 					break;
 				}
 				break;
+
 			case '3':
 				printf("Cerrando sesion...\n");
 				fflush(stdout);
 				break;
+
 			default: printf("ERROR! La opcion seleccionada no es correcta \n");
 			fflush(stdin);
 			}
+
 	}while(opcion=='3');
+
 	sqlite3_close(db);
-		return EXIT_SUCCESS;
+
+	return EXIT_SUCCESS;
 
 }
+
 Usuario pedirDatosInicio(){
 
 	Usuario us;
@@ -92,7 +120,7 @@ Usuario pedirDatosInicio(){
 	fflush(stdout);
 	fflush(stdin);
 	gets(us.correoElectronico);
-	printf("Introduce la contraseña:");
+	printf("Introduce la contraseï¿½a:");
 	fflush(stdout);
 	fflush(stdin);
 	gets(us.contrasenia);
@@ -100,7 +128,7 @@ Usuario pedirDatosInicio(){
 
 }
 
-void registarA(Usuario *u)
+void registarAdmin(Usuario *u)
 {
 		printf("Introduce tu dni: ");
 		fflush(stdout);

@@ -4,15 +4,15 @@
 #include "usuario.h"
 
 
-int encontrarAdministrador(ListaUsuarios us, char *correo)
+int encontrarUsuario(ListaUsuarios us, char *correoElectronico)
 {
 	int enc, x;
 	enc=0;
 	x=0;
 	int esAdm=0;
-	while(enc==0 && x<us.numAdmins)
+	while(enc==0 && x<us.numUsus)
 	{
-		if(strcmp(us.u[x].correoElectronico,correo)==0)//isma??
+		if(strcmp(us.u[x].correoElectronico,correoElectronico)==0)
 		{
 			enc=1;
 		}
@@ -30,12 +30,12 @@ int encontrarAdministrador(ListaUsuarios us, char *correo)
 }
 
 
-ListaUsuarios reservaAdministradores(int tamanyo)
+ListaUsuarios reservaUsuario(int tamanyo)
 {
 	ListaUsuarios us;
 
 	us.tam = tamanyo;
-	us.numAdmins = 0;
+	us.numUsus = 0;
 
 	us.u = (ListaUsuarios*)malloc(tamanyo*sizeof(ListaUsuarios));
 
@@ -66,36 +66,36 @@ ListaUsuarios reservaAdministradores(int tamanyo)
 //
 //}
 
-void borrarAdministrador(ListaUsuarios *ads,char *dni)
+void borrarUsuario(ListaUsuarios *us,char *correoElectronico)
 {
 	int i, x;
 
-	x = encontrarAdministrador(*ads, dni);
+	x = encontrarAdministrador(*us, correoElectronico);
 
 	if(x!=-1)
 	{
-		for(i=x;i<ads->numAdmins;i++)
+		for(i=x;i<us->numUsus;i++)
 		{
-			ads[x] = ads[x+1];
+			us[x] = us[x+1];
 		}
-		ads->numAdmins--;
+		us->numUsus--;
 	}
 
 }
 
-void editarAdministrador(ListaUsuarios *ads, char *dni, char *nombre, char *apellidos, char *correoElectronico, char *cont)
+void editarUsuario(ListaUsuarios *us, char *dni, char *nombre, char *apellidos, char *correoElectronico, char *cont)
 {
 	int x;
 
-		x = encontrarAdministrador(*ads, dni);
+		x = encontrarAdministrador(*us, dni);
 
 		if(x!=-1)
 		{
-			strcpy(ads->u[x].dni, dni);
-			strcpy(ads->u[x].nombre, nombre);
-			strcpy(ads->u[x].apellidos, apellidos);
-			strcpy(ads->u[x].correoElectronico, correoElectronico);
-			strcpy(ads->u[x].contrasenia, cont);
+			strcpy(us->u[x].dni, dni);
+			strcpy(us->u[x].nombre, nombre);
+			strcpy(us->u[x].apellidos, apellidos);
+			strcpy(us->u[x].correoElectronico, correoElectronico);
+			strcpy(us->u[x].contrasenia, cont);
 		}
 
 }

@@ -8,7 +8,7 @@ void crearTablaAdministrador(sqlite3 *db)
 
 
 	//Como poner los valores si tenemos *nombre, *apellidos, *correoElectronico
-	char sql1[] = "CREATE TABLA ADMINISTRADOR(dni varchar2(10), nombre varchar2(20), apellidos varchar2(30), correoElectronico varchar2(30), contrasenia varchar2(30))";
+	char sql1[] = "CREATE TABLA ADMINISTRADOR(dni varchar2(10), nombre varchar2(20), apellidos varchar2(40), correoElectronico varchar2(30), contrasenia varchar2(30))";
 	sqlite3_prepare_v2(db, sql1, -1, &stmt, NULL) ;
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
@@ -53,18 +53,21 @@ void mostrarAdministradores(sqlite3 *db)
 	sqlite3_finalize(stmt);
 
 }
-int buscarUsuario(sqlite3 *db, char *email){
+
+int buscarUsuario(sqlite3 *db, char *correoElectronico){
 	sqlite3_stmt *stmt;
 	char sql[100];
 	int esAdmin;
 
-	sprintf(sql, "SELECT esAdmin FROM USuario WHERE email = '%s'",email);
+	sprintf(sql, "SELECT esAdmin FROM USuario WHERE email = '%s'",correoElectronico);
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
 	sqlite3_step(stmt);
 	esAdmin = sqlite3_column_int(stmt, 1);
 	sqlite3_finalize(stmt);
 
+	return esAdmin;
 }
+
 void borrarAdministradorBBDD(sqlite3 *db, char *dni){
 	sqlite3_stmt *stmt;
 	char sql[100];

@@ -31,13 +31,13 @@ int main(void){
 				esAdmin = buscarUsuario(db, us.correoElectronico);
 				if(esAdmin == 1){
 					do{
-						opcion1 = menuAdministrador();
+						opcion1 = mostrarMenuAdministrador();
 						switch(opcion1){
-							case '1': mostrarVuelos(db);// mostrar viajes
+							case '1':// mostrarVuelos(db);// mostrar viajes
 							break;
-							case '2':modificarReservas(db);// editar las reservas
+							case '2'://modificarReservas(db);// editar las reservas
 							break;
-							case '3':visualizarReservas(db);// visulaizar las reservas
+							case '3'://visualizarReservas(db);// visulaizar las reservas
 							break;
 							case '4':
 								mostrarAdministradores(db);// mostrarAdministradores

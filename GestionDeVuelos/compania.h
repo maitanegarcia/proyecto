@@ -9,7 +9,7 @@
 #define COMPANIA_COMPANIA_H_
 
 typedef struct{
-	int cod[8];
+	char cod[8];
 	char* nombre;
 
 };

@@ -9,8 +9,10 @@
 #define CIUDAD_CIUDAD_H_
 
 typedef struct{
-	int cod[8];
-	char* nombreCiudad;
+	char codO[8];
+	char codD[8];
+	char nombreCOrigen[20];
+	char nombreCDestino[20];
 }Ciudad;
 
 #endif /* CIUDAD_CIUDAD_H_ */

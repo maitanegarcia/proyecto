@@ -13,7 +13,7 @@
 #include "vuelo.h"
 
 typedef struct {
-	int codBillete[8];
+	char codBillete[8];
 	char asiento[2];
 	Clase clase;
 	Cliente cliente;

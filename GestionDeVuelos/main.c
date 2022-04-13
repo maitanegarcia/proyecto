@@ -52,10 +52,12 @@ int main()
 
 						switch(opcion1){
 
-						case '1':// mostrarVuelos(db);// mostrar viajes
+						case '1':
+							mostrarVuelo(&db);// mostrar viajes
 							break;
 
-						case '2'://modificarReservas(db);// editar las reservas
+						case '2':
+							//modificarReservas(db);// editar las reservas
 							break;
 
 						case '3'://visualizarReservas(db);// visulaizar las reservas

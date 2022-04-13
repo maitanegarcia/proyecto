@@ -6,6 +6,8 @@
 Usuario pedirInicioSesion(){
 
 	Usuario us;
+	printf("INICIO SESION\n");
+	printf("---------------------------------\n\n");
 	printf("Introduce el correo electronico:");
 	fflush(stdout);
 	fflush(stdin);
@@ -14,6 +16,7 @@ Usuario pedirInicioSesion(){
 	fflush(stdout);
 	fflush(stdin);
 	gets(us.contrasenia);
+	printf("---------------------------------\n\n");
 	return us;
 
 }

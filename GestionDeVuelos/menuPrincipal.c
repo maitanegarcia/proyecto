@@ -16,6 +16,7 @@ char mostrarMenu(){
 		printf("1.Inicio de sesion\n");
 		printf("2.Registrarse\n");
 		printf("3.Salir\n");
+		printf("---------------------\n\n");
 		fflush(stdout);
 		fflush(stdin);
 		scanf("%c",&opcion);

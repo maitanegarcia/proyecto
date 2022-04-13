@@ -25,18 +25,18 @@ typedef struct
 	int tam;
 }ListaUsuarios;
 
+Usuario pedirInicioSesion();
 
-int encontrarAdministrador(ListaUsuarios us, char *correoElectronico);
+int encontrarUsuario(ListaUsuarios us, char *correoElectronico);
 
-ListaUsuarios reservaAdministradores(int tamanyo);
+ListaUsuarios reservaUsuario(int tamanyo);
 
-//void anadirAdministrador(ListaUsuarios *us);
+//void anadirUsuario(ListaUsuarios *us);
 
-void borrarAdministrador(ListaUsuarios*us,char *correoElectronico);
+void borrarUsuario(ListaUsuarios*us,char *correoElectronico);
 
-void editarAdministrador(ListaUsuarios *us, char *dni, char *nombre, char *apellidos, char *correoElectronico, char *cont);
+void editarUsuario(ListaUsuarios *us, char *dni, char *nombre, char *apellidos, char *correoElectronico, char *cont);
 
 void liberarMemoria(ListaUsuarios us);
-Usuario pedirInicioSesion();
 
 #endif /* ADMINISTRADOR_ADMINISTRADOR_H_ */

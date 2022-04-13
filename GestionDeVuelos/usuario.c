@@ -3,6 +3,20 @@
 #include <stdlib.h>
 #include "usuario.h"
 
+Usuario pedirInicioSesion(){
+
+	Usuario us;
+	printf("Introduce el correo electronico:");
+	fflush(stdout);
+	fflush(stdin);
+	gets(us.correoElectronico);
+	printf("Introduce la contrase�a:");
+	fflush(stdout);
+	fflush(stdin);
+	gets(us.contrasenia);
+	return us;
+
+}
 
 int encontrarUsuario(ListaUsuarios us, char *correoElectronico)
 {
@@ -42,7 +56,7 @@ ListaUsuarios reservaUsuario(int tamanyo)
 	return us;
 }
 //no se porque da error_mirar ismael
-//void anadirAdministrador(ListaUsuarios *us)
+//void anadirUsuario(ListaUsuarios *us)
 //{
 //	ListaUsuarios crear;
 //	int x;
@@ -97,21 +111,6 @@ void editarUsuario(ListaUsuarios *us, char *dni, char *nombre, char *apellidos, 
 			strcpy(us->u[x].correoElectronico, correoElectronico);
 			strcpy(us->u[x].contrasenia, cont);
 		}
-
-}
-
-Usuario pedirInicioSesion(){
-
-	Usuario us;
-	printf("Introduce el correo electronico:");
-	fflush(stdout);
-	fflush(stdin);
-	gets(us.correoElectronico);
-	printf("Introduce la contrase�a:");
-	fflush(stdout);
-	fflush(stdin);
-	gets(us.contrasenia);
-return us;
 
 }
 

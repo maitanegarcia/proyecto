@@ -3,8 +3,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+//------------------------------------------------------------------------------------------
 /*
- * BUSCAR USUARIO
+ * 1. BUSCAR USUARIO
+ * 2. CREAR TABLA USUARIO
+ * 2. Aï¿½ADIR USUARIO
+ * 3. MOSTRAR USUARIO
+ * 4. BORRAR USUARIO
+ *
  */
 int buscarUsuario(sqlite3 *db, char *correoElectronico)
 {
@@ -22,13 +28,7 @@ int buscarUsuario(sqlite3 *db, char *correoElectronico)
 	sqlite3_close(db);
 	return esAdmin;
 }
-//------------------------------------------------------------------------------------------
-/*
- * 1. Aï¿½ADIR ADMINISTRADOR
- * 2.MOSTRAR ADMINISTRADOR
- * 3.BORRAR ADMINISTRADOR
- *
- */
+
 
 /*
  *
@@ -40,7 +40,7 @@ int buscarUsuario(sqlite3 *db, char *correoElectronico)
  *
  */
 //crear tabla administrador
-void crearTablaAdministrador(sqlite3 *db)
+void crearTablaUsuario(sqlite3 *db)
 {
 	sqlite3_stmt *stmt;
 	sqlite3_open("gestorvuelos",db);
@@ -72,7 +72,7 @@ void insertarUSUARIOAdministrador(sqlite3 *db, char *dni, char *nombre, char *ap
 }
 
 //MOSTRAR ADMINISTRADOR
-void mostrarAdministradores(sqlite3 *db)
+void mostrarUsuario(sqlite3 *db)
 {
 	sqlite3_stmt *stmt;
 	int step,*esAdmin;
@@ -99,10 +99,8 @@ void mostrarAdministradores(sqlite3 *db)
 	sqlite3_close(db);
 
 }
-//BORRAR ADMINISTRADOR
-void borrarAdministradorBBDD(sqlite3 *db, char *dni,int esAdmin){
 
-void borrarAdministradorBBDD(sqlite3 *db, char *dni)
+void borrarAdministradorBBDD(sqlite3 *db, char *correoElectronico, char *esAdmin)
 {
 
 	sqlite3_stmt *stmt;
@@ -110,7 +108,7 @@ void borrarAdministradorBBDD(sqlite3 *db, char *dni)
 	printf("Si desea borrar el adminitrador , introduzca el 1");
 	fflush(stdout);
 	fflush(stdin);
-	sprintf(sql, "DELETE FROM USUARIO WHERE DNI = '%s' AND ESADMIN=%d",dni,esAdmin);
+	sprintf(sql, "DELETE FROM USUARIO WHERE DNI = '%s' AND ESADMIN=%d",correoElectronico,esAdmin);
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
@@ -120,16 +118,16 @@ void borrarAdministradorBBDD(sqlite3 *db, char *dni)
 //------------------------------------------------------------------------------------------
 /*
  * 1. Aï¿½ADIR VUELOS
- * 2.MOSTRAR VUELOS
- * 3.BORRAR VUELOS
+ * 2. MOSTRAR VUELOS
+ * 3. BORRAR VUELOS
  */
 
 
-void aniadirVuelo(sqlite3 *db, int id, int fecha, int hora, int plazas, char *cOrigen, char *cDestino)
+void aniadirVuelo(sqlite3 *db, char idVuelo, int fecha, int hora, int plazas, char *codC)
 {
 	sqlite3_stmt *stmt;
 	char sql[100];
-	sprintf(sql, "INSERT INTO VUELO VALUES (%i,%i,%i,%i,%s,%s)", id, fecha, hora, plazas, cOrigen, cDestino);
+	sprintf(sql, "INSERT INTO VUELO VALUES (%i,%i,%i,%i,%s,%s)", idVuelo, fecha, hora, plazas, codC);
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
@@ -155,10 +153,10 @@ void mostrarVuelo(sqlite3 *db) {
 	sqlite3_finalize(stmt);
 }
 
-void borrarVuelo(sqlite3 *db, int id) {
+void borrarVuelo(sqlite3 *db, int idVuelo) {
 	sqlite3_stmt *stmt;
 	char sql[100];
-	sprintf(sql, "DELETE FROM VUELO WHERE IDVUELO = %d", id);
+	sprintf(sql, "DELETE FROM VUELO WHERE IDVUELO = %d", idVuelo);
 	sqlite3_prepare_v2(db, sql,-1,&stmt,NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
@@ -169,10 +167,10 @@ void borrarVuelo(sqlite3 *db, int id) {
  * 2.MOSTRAR COMPAï¿½IA
  * 3.BORRAR COMPAï¿½IA
  */
-void aniadirCompania(sqlite3 *db, int cod, char *nom) {
+void aniadirCompania(sqlite3 *db, int cod, char *nombre) {
 	sqlite3_stmt *stmt;
 	char sql[100];
-	sprintf(sql, "INSERT INTO COMPANIA VALUES(%i,%s)", cod, nom);
+	sprintf(sql, "INSERT INTO COMPANIA VALUES(%i,%s)", cod, nombre);
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
@@ -206,10 +204,10 @@ void borrarCompania(sqlite3 * db, int cod) {
  * 2.MOSTRAR BILLETE
  * 3.BORRAR BILLETE
  */
-void aniadirBillete(sqlite3 *db, char *codBillete, char *asiento, char*clase, char*cliente, char*vuelo) {
+void aniadirBillete(sqlite3 *db, int codBillete, char *asiento, char codClase, char dni, char idVuelo) {
 	sqlite3_stmt *stmt;
 	char sql[100];
-	sprintf(sql, "INSERT INTO BILLETE VALUES(%s,%s,%s,%s,%s)", codBillete, asiento, clase, cliente, vuelo);
+	sprintf(sql, "INSERT INTO BILLETE VALUES(%s,%s,%s,%s,%s)", codBillete, asiento, asiento, codClase, dni, idVuelo);
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
@@ -247,7 +245,7 @@ void borrarBillete(sqlite3 * db, char* codBillete) {
  * 2.MOSTRAR CUIDAD
  * 3.BORRAR CUIDAD
  */
-void aniadirCiudad(sqlite3 *db, char *codO,char *codD,char *nombreCiudadO ,char *nombreCiudadD) {
+void aniadirCiudad(sqlite3 *db, char *codC, char *nombreCiudad) {
 	sqlite3_stmt *stmt;
 	char sql[100];
 	sprintf(sql, "INSERT INTO CIUDAD VALUES('%s','%s','%s','%s')",codO,codD,nombreCiudadO , nombreCiudadD);
@@ -272,10 +270,10 @@ void mostrarCiudad(sqlite3 *db) {
 	} while (resul == SQLITE_ROW);
 	sqlite3_finalize(stmt);
 }
-void borrarCiudad(sqlite3 * db,char *codO) {
+void borrarCiudad(sqlite3 * db,char *codC) {
 	sqlite3_stmt *stmt;
 	char sql[100];
-	sprintf(sql, "DELETE FROM CIUDAD WHERE COD_CIUD = %s",codO);
+	sprintf(sql, "DELETE FROM CIUDAD WHERE COD_CIUD = %s",codC);
 	sqlite3_prepare_v2(db, sql,-1,&stmt,NULL);
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
@@ -286,7 +284,7 @@ void borrarCiudad(sqlite3 * db,char *codO) {
  * 2.MOSTRAR CLASE
  * 3.BORRAR CLASE
  */
-void aniadirClase(sqlite3 *db, char *cod, char *nomClase) {
+void aniadirClase(sqlite3 *db, char codClase, char *nomClase) {
 	sqlite3_stmt *stmt;
 	char sql[100];
 	sprintf(sql, "INSERT INTO CLASE VALUES (%s,'%s')", cod, nomClase);
@@ -309,7 +307,7 @@ void mostrarClase(sqlite3 *db) {
 	} while (resul == SQLITE_ROW);
 	sqlite3_finalize(stmt);
 }
-void borrarClase(sqlite3 * db, char cod) {
+void borrarClase(sqlite3 * db, char codClase) {
 	sqlite3_stmt *stmt;
 	char sql[100];
 	sprintf(sql, "DELETE FROM CLASE WHERE COD_CLASE = %s",cod);
@@ -319,41 +317,41 @@ void borrarClase(sqlite3 * db, char cod) {
 }
 //------------------------------------------------------------------------------------------
 /*
- * 1. AÑADIR RESERVAS
+ * 1. Aï¿½ADIR RESERVAS
  * 2.MOSTRAR RESERVAS
  * 3.BORRAR RESERVAS
  * 4.MODIFICAR RESERVAS
  */
-void anadirReserva(sqlite3 *db, char *cod,char *codO,char *codD, int fecha, int hora,int nump, char *codClase){
-	sqlite3_stmt *stmt;
-
-	char sql[100];
-
-	sprintf(sql, "INSERT INTO RESERVAS VALUES('%s','%s','%s',%d,%d,%d,'%s')",cod,codO,codD,fecha,hora,nump,codClase);
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
-	sqlite3_step(stmt);
-	sqlite3_finalize(stmt);
-}
-void mostrarReservas(sqlite3 *db){
-	int resul,fecha,hora;
-		sqlite3_stmt *stmt;
-		char sql[100],*cod,*codO,*codD,*codClase;
-
-
-		sprintf(sql,"SELECT *FROM RESERVAS");
-		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
-
-		do{
-			resul = sqlite3_step(stmt);
-			strcpy(cod ,(char*) sqlite3_column_int(stmt, 0));
-			strcpy(codO, (char*)sqlite3_column_text(stmt, 1));
-			strcpy(codD, (char*)sqlite3_column_text(stmt, 2));
-			fecha =sqlite3_column_int(stmt, 3);
-			hora =sqlite3_column_int(stmt, 4);
-			strcpy(codClase, (char*)sqlite3_column_text(stmt, 5));
-
-			printf("%s %s %s %d %d %s\n",cod,codO,codD,fecha,hora,codClase);
-		}while(resul == SQLITE_ROW);
-		sqlite3_finalize(stmt);
-
-}
+//void anadirReserva(sqlite3 *db, char *cod,char *codO,char *codD, int fecha, int hora,int nump, char *codClase){
+//	sqlite3_stmt *stmt;
+//
+//	char sql[100];
+//
+//	sprintf(sql, "INSERT INTO RESERVAS VALUES('%s','%s','%s',%d,%d,%d,'%s')",cod,codO,codD,fecha,hora,nump,codClase);
+//	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
+//	sqlite3_step(stmt);
+//	sqlite3_finalize(stmt);
+//}
+//void mostrarReservas(sqlite3 *db){
+//	int resul,fecha,hora;
+//		sqlite3_stmt *stmt;
+//		char sql[100],*cod,*codO,*codD,*codClase;
+//
+//
+//		sprintf(sql,"SELECT *FROM RESERVAS");
+//		sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
+//
+//		do{
+//			resul = sqlite3_step(stmt);
+//			strcpy(cod ,(char*) sqlite3_column_int(stmt, 0));
+//			strcpy(codO, (char*)sqlite3_column_text(stmt, 1));
+//			strcpy(codD, (char*)sqlite3_column_text(stmt, 2));
+//			fecha =sqlite3_column_int(stmt, 3);
+//			hora =sqlite3_column_int(stmt, 4);
+//			strcpy(codClase, (char*)sqlite3_column_text(stmt, 5));
+//
+//			printf("%s %s %s %d %d %s\n",cod,codO,codD,fecha,hora,codClase);
+//		}while(resul == SQLITE_ROW);
+//		sqlite3_finalize(stmt);
+//
+//}

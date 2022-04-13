@@ -15,8 +15,8 @@ typedef struct {
 	int fecha[8];
 	int hora[4];
 	int plazas;
-	Ciudad cOrigen;
-	Ciudad cDestino;
+	Ciudad codO;
+	Ciudad codD;
 }Vuelo;
 
 

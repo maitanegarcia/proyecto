@@ -37,5 +37,6 @@ void borrarAdministrador(ListaUsuarios*us,char *correoElectronico);
 void editarAdministrador(ListaUsuarios *us, char *dni, char *nombre, char *apellidos, char *correoElectronico, char *cont);
 
 void liberarMemoria(ListaUsuarios us);
+Usuario pedirInicioSesion();
 
 #endif /* ADMINISTRADOR_ADMINISTRADOR_H_ */

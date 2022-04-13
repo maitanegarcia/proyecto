@@ -12,8 +12,7 @@
 #include "bbdd.h"
 #include "log.h"
 
-// pedir inicio de sesion
-Usuario pedirInicioSesion();
+
 void registrarAdmin(Usuario *u);
 
 
@@ -41,7 +40,7 @@ int main(){
 			switch(opcion){
 
 			case '1':
-				us = pedirIniciSesion();
+				us = pedirInicioSesion();
 				printf("%s\n",us.correoElectronico);
 				esAdmin = buscarUsuario(db, us.correoElectronico);
 
@@ -124,20 +123,6 @@ int main(){
 
 
 
-Usuario pedirIniciSesion(){
-
-	Usuario us;
-	printf("Introduce el correo electronico:");
-	fflush(stdout);
-	fflush(stdin);
-	gets(us.correoElectronico);
-	printf("Introduce la contrase�a:");
-	fflush(stdout);
-	fflush(stdin);
-	gets(us.contrasenia);
-return us;
-
-}
 
 void registarAdmin(Usuario *u){
 

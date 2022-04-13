@@ -100,6 +100,21 @@ void editarUsuario(ListaUsuarios *us, char *dni, char *nombre, char *apellidos, 
 
 }
 
+Usuario pedirInicioSesion(){
+
+	Usuario us;
+	printf("Introduce el correo electronico:");
+	fflush(stdout);
+	fflush(stdin);
+	gets(us.correoElectronico);
+	printf("Introduce la contrase�a:");
+	fflush(stdout);
+	fflush(stdin);
+	gets(us.contrasenia);
+return us;
+
+}
+
 void liberarMemoria(ListaUsuarios ads)
 {
 	free(ads.u);

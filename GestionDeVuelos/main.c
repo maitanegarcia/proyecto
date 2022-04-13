@@ -17,8 +17,8 @@ Usuario pedirDatosInicio();
 void registrarAdmin(Usuario *u);
 
 
-int main()
-{
+int main(){
+
 	char opcion,opcion1;
 	Usuario us;
 	tConfig c;
@@ -119,8 +119,7 @@ int main()
 
 }
 
-Usuario pedirDatosInicio()
-{
+Usuario pedirDatosInicio(){
 
 	Usuario us;
 	printf("Introduce el correo electronico:");
@@ -135,8 +134,8 @@ Usuario pedirDatosInicio()
 
 }
 
-void registarAdmin(Usuario *u)
-{
+void registarAdmin(Usuario *u){
+
 		printf("Introduce tu dni: ");
 		fflush(stdout);
 		fflush(stdin);

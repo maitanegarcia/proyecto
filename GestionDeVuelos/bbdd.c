@@ -4,7 +4,8 @@
 /*
  * BUSCAR USUARIO
  */
-int buscarUsuario(sqlite3 *db, char *correoElectronico){
+int buscarUsuario(sqlite3 *db, char *correoElectronico)
+{
 	sqlite3_stmt *stmt;
 	char sql[100];
 	int esAdmin;
@@ -21,7 +22,7 @@ int buscarUsuario(sqlite3 *db, char *correoElectronico){
 }
 //------------------------------------------------------------------------------------------
 /*
- * 1. AÑADIR ADMINISTRADOR
+ * 1. Aï¿½ADIR ADMINISTRADOR
  * 2.MOSTRAR ADMINISTRADOR
  * 3.BORRAR ADMINISTRADOR
  *
@@ -81,7 +82,8 @@ void mostrarAdministradores(sqlite3 *db)
 
 }
 //BORRAR ADMINISTRADOR
-void borrarAdministradorBBDD(sqlite3 *db, char *dni){
+void borrarAdministradorBBDD(sqlite3 *db, char *dni)
+{
 	sqlite3_stmt *stmt;
 	char sql[100];
 
@@ -93,13 +95,14 @@ void borrarAdministradorBBDD(sqlite3 *db, char *dni){
 
 //------------------------------------------------------------------------------------------
 /*
- * 1. AÑADIR VUELOS
+ * 1. Aï¿½ADIR VUELOS
  * 2.MOSTRAR VUELOS
  * 3.BORRAR VUELOS
  */
 
 
-void aniadirVuelo(sqlite3 *db, int id, int fecha, int hora, int plazas, char *cOrigen, char *cDestino) {
+void aniadirVuelo(sqlite3 *db, int id, int fecha, int hora, int plazas, char *cOrigen, char *cDestino)
+{
 	sqlite3_stmt *stmt;
 	char sql[100];
 	sprintf(sql, "insert into vuelo values(%i,%i,%i,%i,%s,%s)", id, fecha, hora, plazas, cOrigen, cDestino);
@@ -138,9 +141,9 @@ void borrarVuelo(sqlite3 *db, int id) {
 }
 //------------------------------------------------------------------------------------------
 /*
- * 1. AÑADIR COMPAÑIA
- * 2.MOSTRAR COMPAÑIA
- * 3.BORRAR COMPAÑIA
+ * 1. Aï¿½ADIR COMPAï¿½IA
+ * 2.MOSTRAR COMPAï¿½IA
+ * 3.BORRAR COMPAï¿½IA
  */
 void aniadirCompania(sqlite3 *db, int cod, char *nom) {
 	sqlite3_stmt *stmt;
@@ -175,7 +178,7 @@ void borrarCompania(sqlite3 * db, int cod) {
 }
 //------------------------------------------------------------------------------------------
 /*
- * 1. AÑADIR BILLETE
+ * 1. Aï¿½ADIR BILLETE
  * 2.MOSTRAR BILLETE
  * 3.BORRAR BILLETE
  */
@@ -216,7 +219,7 @@ void borrarBillete(sqlite3 * db, int codBillete) {
 }
 //------------------------------------------------------------------------------------------
 /*
- * 1. AÑADIR CUIDAD
+ * 1. Aï¿½ADIR CUIDAD
  * 2.MOSTRAR CUIDAD
  * 3.BORRAR CUIDAD
  */
@@ -253,7 +256,7 @@ void borrarCiudad(sqlite3 * db, int cod) {
 }
 //------------------------------------------------------------------------------------------
 /*
- * 1. AÑADIR CLASE
+ * 1. Aï¿½ADIR CLASE
  * 2.MOSTRAR CLASE
  * 3.BORRAR CLASE
  */

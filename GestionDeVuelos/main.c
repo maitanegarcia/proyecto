@@ -13,7 +13,7 @@
 #include "log.h"
 
 
-Usuario pedirDatosInicio();
+Usuario pedirIniciSesion();
 void registrarAdmin(Usuario *u);
 
 
@@ -41,7 +41,7 @@ int main()
 			switch(opcion){
 
 			case '1':
-				us = pedirDatosInicio();
+				us = pedirIniciSesion();
 				printf("%s\n",us.correoElectronico);
 				esAdmin = buscarUsuario(db, us.correoElectronico);
 
@@ -113,13 +113,14 @@ int main()
 
 	}while(opcion=='3');
 
-	sqlite3_close(db);
+
 
 	return EXIT_SUCCESS;
 
 }
 
-Usuario pedirDatosInicio()
+Usuario pedirIniciSesion() //
+
 {
 
 	Usuario us;
@@ -131,32 +132,34 @@ Usuario pedirDatosInicio()
 	fflush(stdout);
 	fflush(stdin);
 	gets(us.contrasenia);
-	return us;
+return us;
 
 }
 
-void registarAdmin(Usuario *u)
-{
-		printf("Introduce tu dni: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(u->dni);
-		printf("Introduce tu nombre: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(u->nombre);
-		printf("Introduce tus apellidos: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(u->apellidos);
-		printf("Introduce tu email: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(u->correoElectronico);
-		printf("Introduce tu contraseña: ");
-		fflush(stdout);
-		fflush(stdin);
-		gets(u->contrasenia);
+void registarAdmin(Usuario *u){
+	printf("Introduce tu dni: ");
+			fflush(stdout);
+			fflush(stdin);
+			gets(u->dni);
+			printf("Introduce tu nombre: ");
+			fflush(stdout);
+			fflush(stdin);
+			gets(u->nombre);
+			printf("Introduce tus apellidos: ");
+			fflush(stdout);
+			fflush(stdin);
+			gets(u->apellidos);
+			printf("Introduce tu email: ");
+			fflush(stdout);
+			fflush(stdin);
+			gets(u->correoElectronico);
+			printf("Introduce tu contraseña: ");
+			fflush(stdout);
+			fflush(stdin);
+			gets(u->contrasenia);
 
 }
+
+
+
 

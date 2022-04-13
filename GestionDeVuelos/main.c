@@ -10,19 +10,25 @@
 #include "usuario.h"
 #include "menuAdministrador.h"
 #include "bbdd.h"
+#include "log.h"
 
 
 Usuario pedirDatosInicio();
 void registrarAdmin(Usuario *u);
 
 
-int main(void)
+int main()
 {
 	char opcion,opcion1;
 	Usuario us;
 	tConfig c;
 	sqlite3 *db;
 	int esAdmin;
+
+	//Fichero log
+	log("Fichero log ejecutando");
+	warning("Log warning");
+	error("Log error");
 
 	sqlite3_open("gestiorvuelos.sqlite", &db);
 	//Cliente cl;
@@ -113,7 +119,8 @@ int main(void)
 
 }
 
-Usuario pedirDatosInicio(){
+Usuario pedirDatosInicio()
+{
 
 	Usuario us;
 	printf("Introduce el correo electronico:");

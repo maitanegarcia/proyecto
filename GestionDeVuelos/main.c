@@ -12,13 +12,13 @@
 #include "bbdd.h"
 #include "log.h"
 
-
-Usuario pedirIniciSesion();
+// pedir inicio de sesion
+Usuario pedirInicioSesion();
 void registrarAdmin(Usuario *u);
 
 
-int main()
-{
+int main(){
+
 	char opcion,opcion1;
 	Usuario us;
 	tConfig c;
@@ -121,9 +121,10 @@ int main()
 
 }
 
-Usuario pedirIniciSesion() //
 
-{
+
+
+Usuario pedirIniciSesion(){
 
 	Usuario us;
 	printf("Introduce el correo electronico:");
@@ -139,26 +140,29 @@ return us;
 }
 
 void registarAdmin(Usuario *u){
-	printf("Introduce tu dni: ");
-			fflush(stdout);
-			fflush(stdin);
-			gets(u->dni);
-			printf("Introduce tu nombre: ");
-			fflush(stdout);
-			fflush(stdin);
-			gets(u->nombre);
-			printf("Introduce tus apellidos: ");
-			fflush(stdout);
-			fflush(stdin);
-			gets(u->apellidos);
-			printf("Introduce tu email: ");
-			fflush(stdout);
-			fflush(stdin);
-			gets(u->correoElectronico);
-			printf("Introduce tu contraseña: ");
-			fflush(stdout);
-			fflush(stdin);
-			gets(u->contrasenia);
+
+
+		printf("Introduce tu dni: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(u->dni);
+		printf("Introduce tu nombre: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(u->nombre);
+		printf("Introduce tus apellidos: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(u->apellidos);
+		printf("Introduce tu email: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(u->correoElectronico);
+		printf("Introduce tu contraseña: ");
+		fflush(stdout);
+		fflush(stdin);
+		gets(u->contrasenia);
+
 
 }
 
